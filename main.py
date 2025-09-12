@@ -24,13 +24,25 @@ class Minecraft:
         self.is_running = True
 
     def update(self):
-        pass
+        self.delta_time = self.clock.tick()
+        self.time = pg.time.get_ticks() * 0.001
+        pg.display.set_caption(f'{self.clock.get_fps() :.0f}')
+
     def render(self):
-        pass
+        self.ctx.clear()
+        pg.display.flip()
+
     def handle_events(self):
-        pass
+        for event in pg.event.get():
+            if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
+                self.is_running = False
     def run(self):
-        pass
+        while self.is_running:
+            self.handle_events()
+            self.update()
+            self.render()
+        pg.quit()
+        sys.exit()
 
 if __name__ == '__main__':
     app = Minecraft()
