@@ -9,7 +9,12 @@ class ShaderProgram:
         self.quad = self.get_program(shader_name = 'quad')
         #--------------------------------
 
-        self.set_uniforms_on_init();
+        self.set_uniforms_on_init()
+
+    def set_uniforms_on_init(self):
+        # Example: setting a uniform variable
+        # self.quad['u_resolution'].value = (800, 600)
+        pass  # Replace with actual uniform setup
 
     def get_program(self,shader_name):
         with open(f'shaders/{shader_name}.vert') as file:
@@ -20,3 +25,8 @@ class ShaderProgram:
 
         program = self.ctx.program(vertex_shader = vertex_shader, fragment_shader = fragment_shader)
         return program
+
+    def update(self):
+        # Example: update time uniform
+        # self.quad['u_time'].value = time.time()
+        pass  # Replace with actual logic
