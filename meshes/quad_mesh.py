@@ -10,6 +10,10 @@ class QuadMesh(BaseMesh):
         self.ctx = app.ctx
         self.program = app.shadder_program.quad
 
+        self.vbo_format = '3f 3f'
+        self.attrs = ('in_position','in_color')
+        self.vao = self.get_vao()
+
     def get_vertex_data(self):
         vertices = [
             (0.5,0.5,0.0),(-0.5,0.5,0.0),(-0.5,-0.5,0.0),
