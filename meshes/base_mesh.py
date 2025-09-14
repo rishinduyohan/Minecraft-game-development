@@ -12,3 +12,16 @@ class BaseMesh:
         self.attrs: tuple[str,...] = None
         #vertex array object
         self.vbo = None
+
+    def get_vertex_array(self) -> np.array:...
+
+    def get_vao(self):
+        vertex_data = self.get_vertex_array()
+        vbo = self.ctx_buffer(vertex_data)
+        vao = self.ctx.vertex_array(
+            self.program, [(vbo, self.vbo_format, *self.attrs)], skip_errors=True
+        )
+        return vao
+
+    def render(self):
+        self.vbo.render()
