@@ -8,6 +8,8 @@ from scene import Scene
 class Minecraft:
     def __init__(self):
         pg.init()
+        self.shader_program = None
+        self.scene = None
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION,3)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK,pg.GL_CONTEXT_PROFILE_CORE)
@@ -28,9 +30,12 @@ class Minecraft:
 
     def on_init(self):
         self.shader_program = ShaderProgram(self)
+        self.scene = Scene(self)
 
     def update(self):
         self.shader_program.update()
+        self.scene.update()
+
         self.delta_time = self.clock.tick()
         self.time = pg.time.get_ticks() * 0.001
         pg.display.set_caption(f'{self.clock.get_fps() :.0f}')
