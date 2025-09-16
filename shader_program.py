@@ -8,6 +8,11 @@ class ShaderProgram:
         self.quad = self.get_program(shader_name='quad')
         #------------------------------
 
+    def set_uniforms_on_init(self):
+        pass
+
+    def update(self):
+        pass
 
     def get_program(self,shader_name):
         with open(f'shaders/{shader_name}.vert') as file:
