@@ -3,6 +3,7 @@ import moderngl as mgl
 import pygame as pg
 import sys
 from shader_program import ShaderProgram
+from scene import Scene
 
 class Minecraft:
     def __init__(self):
@@ -36,6 +37,7 @@ class Minecraft:
 
     def render(self):
         self.ctx.clear(color=BG_COLOR)
+        self.scene.render()
         pg.display.flip()
 
     def handle_events(self):
