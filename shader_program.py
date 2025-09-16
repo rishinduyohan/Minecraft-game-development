@@ -4,6 +4,10 @@ class ShaderProgram:
     def __init__(self,app):
         self.app = app
         self.ctx = app.ctx
+        #----------- shaders ---------#
+        self.quad = self.get_program(shader_name='quad')
+        #------------------------------
+
 
     def get_program(self,shader_name):
         with open(f'shaders/{shader_name}.vert') as file:
