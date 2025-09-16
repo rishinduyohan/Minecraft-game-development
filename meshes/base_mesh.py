@@ -23,3 +23,5 @@ class BaseMesh:
         )
         return vao
 
+    def render(self):
+        self.vao.render()
