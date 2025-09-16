@@ -10,4 +10,4 @@ class Scene:
         pass
 
     def render(self):
-        pass
+        self.quad.render()
