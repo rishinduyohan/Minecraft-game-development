@@ -12,3 +12,7 @@ class BaseMesh:
         self.attrs : tuple[str,...] = None
         #vertex array object
         self.vao = None
+
+    def get_vertex_data(self) -> np.array: ...
+
+
