@@ -4,6 +4,8 @@ import pygame as pg
 import sys
 from shader_program import ShaderProgram
 from scene import Scene
+from player import Player
+
 
 class Minecraft:
     def __init__(self):
@@ -29,10 +31,12 @@ class Minecraft:
         self.on_init()
 
     def on_init(self):
+        self.player = Player(self)
         self.shader_program = ShaderProgram(self)
         self.scene = Scene(self)
 
     def update(self):
+        self.player.update()
         self.shader_program.update()
         self.scene.update()
 
