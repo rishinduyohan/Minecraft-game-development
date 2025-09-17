@@ -7,6 +7,11 @@ class Player(Camera):
     def __init__(self, app, position=PLAYER_POS, yaw=-90, pitch=0):
         self.app = app
         super().__init__(position,yaw,pitch)
+    
+    def update(self):
+        self.keyboard_control()
+        self.mouse_control()
+        super().update()
 
     def mouse_control(self):
         mouse_dx, mouse_dy = pg.mouse.get_rel()
