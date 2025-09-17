@@ -27,6 +27,9 @@ class Minecraft:
         self.delta_time = 0
         self.time = 0
 
+        pg.event.set_grab(True)
+        pg.mouse.set_visible(False)
+
         self.is_running = True
         self.on_init()
 
