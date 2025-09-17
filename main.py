@@ -49,6 +49,7 @@ class Minecraft:
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 self.is_running = False
+
     def run(self):
         while self.is_running:
             self.handle_events()
