@@ -27,3 +27,29 @@ class Camera:
         self.forward = glm.normalize(self.forward)
         self.right = glm.normalize(glm.cross(self.forward, glm.vec3(0, 1, 0)))
         self.up = glm.normalize(glm.cross(self.right, self.forward))
+
+    def rotate_pitch(self, delta_y):
+        self.pitch -= delta_y
+        self.pitch = glm.clamp(self.pitch, -PITCH_MAX, PITCH_MAX)
+
+    def rotate_yaw(self, delta_x):
+        self.yaw += delta_x
+
+    def move_left(self, velocity):
+        self.position -= self.right * velocity
+
+    def move_right(self, velocity):
+        self.position += self.right * velocity
+
+    def move_up(self, velocity):
+        self.position += self.up * velocity
+
+    def move_down(self, velocity):
+        self.position -= self.up * velocity
+
+    def move_forward(self, velocity):
+        self.position += self.forward * velocity
+
+    def move_backward(self, velocity):
+        self.position -= self.forward * velocity
+
