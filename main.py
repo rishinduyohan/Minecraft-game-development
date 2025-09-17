@@ -4,6 +4,8 @@ import pygame as pg
 import sys
 from shader_program import ShaderProgram
 from scene import Scene
+from player import Player
+
 
 class Minecraft:
     def __init__(self):
@@ -25,14 +27,19 @@ class Minecraft:
         self.delta_time = 0
         self.time = 0
 
+        pg.event.set_grab(True)
+        pg.mouse.set_visible(False)
+
         self.is_running = True
         self.on_init()
 
     def on_init(self):
+        self.player = Player(self)
         self.shader_program = ShaderProgram(self)
         self.scene = Scene(self)
 
     def update(self):
+        self.player.update()
         self.shader_program.update()
         self.scene.update()
 
@@ -49,6 +56,7 @@ class Minecraft:
         for event in pg.event.get():
             if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
                 self.is_running = False
+
     def run(self):
         while self.is_running:
             self.handle_events()
