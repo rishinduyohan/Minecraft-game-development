@@ -8,3 +8,19 @@ class Player(Camera):
         self.app = app
         super().__init__(position,yaw,pitch)
 
+    def keyboard_control(self):
+        key_state = pg.key.get_pressed()
+        vel = PLAYER_SPEED *  self.app.delta_time
+        if key_state[pg.K_w]:
+            self.move_forward(vel)
+        if key_state[pg.K_s]:
+            self.move_backward(vel)
+        if key_state[pg.K_a]:
+            self.move_left(vel)
+        if key_state[pg.K_d]:
+            self.move_right(vel)
+        if key_state[pg.K_q]:
+            self.move_up(vel)
+        if key_state[pg.K_e]:
+           self.move_down(vel)
+
