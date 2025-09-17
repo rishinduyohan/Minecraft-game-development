@@ -12,6 +12,12 @@ class Camera:
 
         self.m_proj = glm.perspective(V_FOV, ASPECT_RATIO, NEAR, FAR)
         self.m_proj = glm.mat4()
+    def update(self):
+        self.update_vectors()
+        self.update_view_matrix()
+
+    def update_view_matrix(self):
+        self.m_view = glm.lookAt(self.position, self.position * self.forward, self.up)
 
     def update_vectors(self):
         self.forward.x = glm.cos(self.yaw) * glm.cos(self.pitch)
